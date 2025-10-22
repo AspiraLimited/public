@@ -44,3 +44,11 @@ Java Style Guide — Agent Edition
 
 *   Prefer constructor injection via `@RequiredArgsConstructor`; dependencies `final`. Avoid `@Autowired` unless strongly justified.
 *   Application code must not reference profile names. Forbidden: `env.acceptsProfiles("prod")`, `@Profile("prod")`, `System.getProperty("spring.profiles.active")`.
+
+**Configuration**
+
+The principle of configuration responsibility is as follows:
+* `configService.getConfig()` — configuration for the service’s business logic
+* `/config/application.yml` — settings that depend on the environment where the service runs
+* `/resources/application.yml` — configuration of Spring components that does not depend on the environment
+  
