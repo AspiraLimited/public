@@ -49,6 +49,6 @@ Java Style Guide — Agent Edition
 
 The principle of configuration responsibility is as follows:
 * `configService.getConfig()` — configuration for the service’s business logic
-* `/config/application.yml` — settings that depend on the environment where the service runs
+* `/config/application.yml` (auto-deployed), `/config/application-{PROFILE}.yml` (local dev configs, excluded from git), `/config/application-{PROFILE}-example.yml` (example local dev configs),  — settings that depend on the environment where the service runs
 * `/resources/application.yml` — configuration of Spring components that does not depend on the environment
   
