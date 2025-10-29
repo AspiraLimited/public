@@ -32,6 +32,7 @@ Java Style Guide — Agent Edition
 
 **Testing**
 
+* Prefer using real objects, use Mockito for mocking external systems
 *   Recommended unit test method name patterns:
     *   `shouldExpectedBehavior_whenStateUnderTest`
     *   `givenPreconditions_whenStateUnderTest_thenExpectedBehavior`
