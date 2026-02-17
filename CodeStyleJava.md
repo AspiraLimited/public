@@ -8,6 +8,7 @@ Java Style Guide — Agent Edition
 **Language & APIs**
 
 *   Lombok is **required**.
+*   In `@UtilityClass` classes, all members except the constructor must be explicitly marked `static`.
 *   `var` is **forbidden**.
 *   Prefer simple `for` loops. Do **not** use `collection.forEach(lambda)` unless the lambda is a **method reference**.
 *   Keep Streams simple; if readability is in doubt, use a loop.
