@@ -11,7 +11,7 @@ Java Style Guide — Agent Edition
 *   In `@UtilityClass` classes, all members except the constructor must be explicitly marked `static`.
 *   `var` is **forbidden**.
 *   Nullability contracts use JSpecify - `org.jspecify.annotations.Nullable` and `org.jspecify.annotations.NonNull`. `@NullMarked` / `@NullUnmarked` are allowed only on methods and records; forbidden on classes and in package-info.java. Usage of alternative nullability contract annotations (such as `org.springframework.lang.Nullable`, `javax.annotation.Nullable`, `javax.annotation.Nonnull`, `org.jetbrains.annotations.*`, `edu.umd.cs.findbugs.annotations.*`) is **forbidden**.
-*   method argument null-check in runtime should be implemented with `@lombok.NonNull`.
+*   Use @lombok.NonNull only for runtime argements null checks when they may realistically fail and improve stack trace readability. Do not use such checks universally.
 *   Prefer simple `for` loops. Do **not** use `collection.forEach(lambda)` unless the lambda is a **method reference**.
 *   Keep Streams simple; if readability is in doubt, use a loop.
 
