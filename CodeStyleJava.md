@@ -56,3 +56,8 @@ The principle of configuration responsibility is as follows:
 * `/config/application.yml` (auto-deployed), `/config/application-{PROFILE}.yml` (local dev configs, excluded from git), `/config/application-{PROFILE}-example.yml` (example local dev configs),  — settings that depend on the environment where the service runs
 * `/resources/application.yml` — configuration of Spring components that does not depend on the environment
   
+** Maven **
+
+*  Do not move one-off versions into properties unless that improves clarity.
+*  Keep versions close to the consuming module when the dependency is truly local.
+  
