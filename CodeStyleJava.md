@@ -1,6 +1,13 @@
 Java Style Guide — Agent Edition
 ================================
 
+**Getting updates**
+
+```bash
+curl https://raw.githubusercontent.com/AspiraLimited/public/refs/heads/master/CodeStyleJava.md > CODESTYLE.md
+```
+
+
 **Baseline**
 
 *   Follow Google Java Style Guide (except formatting). Use IntelliJ “Default” auto-formatter.
