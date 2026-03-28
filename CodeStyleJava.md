@@ -58,6 +58,6 @@ The principle of configuration responsibility is as follows:
   
 **Maven**
 
-*  Do not move one-off versions into properties unless that improves clarity.
+*  Do not move single-use versions into properties unless that improves clarity.
 *  Keep versions close to the consuming module when the dependency is truly local.
   
