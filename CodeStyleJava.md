@@ -21,6 +21,7 @@ curl https://raw.githubusercontent.com/AspiraLimited/public/refs/heads/master/Co
 *   Use `@lombok.NonNull` only for runtime arguments null checks when they may realistically fail and improve stack trace readability. Do not use such checks universally.
 *   Prefer simple `for` loops. Do **not** use `collection.forEach(lambda)` unless the lambda is a **method reference**.
 *   Keep Streams simple; if readability is in doubt, use a loop.
+*   FQCNs are forbidden unless colliding with other class name.
 
 **Constants**
 
