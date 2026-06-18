@@ -17,11 +17,17 @@ curl https://raw.githubusercontent.com/AspiraLimited/public/refs/heads/master/Co
 *   Lombok is **required**.
 *   In `@UtilityClass` classes, all members except the constructor must be explicitly marked `static`.
 *   `var` is **forbidden**.
-*   Nullability contracts use JSpecify - `org.jspecify.annotations.Nullable` and `org.jspecify.annotations.NonNull`. `@NullMarked` / `@NullUnmarked` are allowed only on methods and records; forbidden on classes and in package-info.java. Usage of alternative nullability contract annotations (such as `org.springframework.lang.Nullable`, `javax.annotation.Nullable`, `javax.annotation.Nonnull`, `org.jetbrains.annotations.*`, `edu.umd.cs.findbugs.annotations.*`) is **forbidden**.
-*   Use `@lombok.NonNull` only for runtime arguments null checks when they may realistically fail and improve stack trace readability. Do not use such checks universally.
 *   Prefer simple `for` loops. Do **not** use `collection.forEach(lambda)` unless the lambda is a **method reference**.
 *   Keep Streams simple; if readability is in doubt, use a loop.
 *   FQCNs are forbidden unless colliding with other class name.
+
+**Nullability & Optional**
+
+*   Nullability contracts use JSpecify - `org.jspecify.annotations.Nullable` and `org.jspecify.annotations.NonNull`. `@NullMarked` / `@NullUnmarked` are allowed only on methods and records; forbidden on classes and in package-info.java. Usage of alternative nullability contract annotations (such as `org.springframework.lang.Nullable`, `javax.annotation.Nullable`, `javax.annotation.Nonnull`, `org.jetbrains.annotations.*`, `edu.umd.cs.findbugs.annotations.*`) is **forbidden**.
+*   Use `@lombok.NonNull` only for runtime arguments null checks when they may realistically fail and improve stack trace readability. Do not use such checks universally.
+*   Never use `Optional` in fields, method parameters, or to wrap collections. Exceptions: declaring a return type from standard JDK APIs, terminal Streams, or Spring Data repositories.
+*   Unwrap immediately at the boundary via `.orElse(null)` or `.orElseThrow()`. Do not construct `Optional` instances to chain methods; favor simple imperative null checks (`if (x != null)`).
+*   Add `org.jspecify.annotations.Nullable` and `org.jspecify.annotations.NonNull` to `lombok.copyableAnnotations` in `lombok.config`.
 
 **Constants**
 
