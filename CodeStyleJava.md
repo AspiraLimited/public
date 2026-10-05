@@ -31,10 +31,9 @@ curl https://raw.githubusercontent.com/AspiraLimited/public/refs/heads/master/Co
 
 **Nullability & Optional**
 
-*   Nullability contracts use JSpecify - `org.jspecify.annotations.Nullable` and `org.jspecify.annotations.NonNull`. `@NullMarked` / `@NullUnmarked` are allowed only on methods and records; forbidden on classes and in package-info.java. Usage of alternative nullability contract annotations (such as `org.springframework.lang.Nullable`, `javax.annotation.Nullable`, `javax.annotation.Nonnull`, `org.jetbrains.annotations.*`, `edu.umd.cs.findbugs.annotations.*`) is **forbidden**.
-*   Use wrapper types (`Integer`/`Long`/`Boolean`/…) only when the value is nullable (then it must be marked `@Nullable`), when boxing is required by generics (`List<@NonNull Integer>`, or `List<Integer>` inside a `@NullMarked` scope), or when an inherited or externally defined API signature requires a wrapper type (e.g. overriding `@NonNull Integer getCode()`).
-*   Outside a `@NullMarked` scope, mark every non-null reference in a signature with `@NonNull`, including type arguments (e.g. `List<@NonNull String>`).
-*   Use `@NullMarked` only when it replaces at least 3 `@NonNull` annotations in the signature.
+*   Nullability contracts use JSpecify. Annotate every method and record with `org.jspecify.annotations.NullMarked`; do not put it on classes, constructors (NPE in NullAway), interfaces, enums or in package-info.java. NullAway runs with `-XepOpt:NullAway:OnlyNullMarked=true`.
+*   Inside `@NullMarked` code, references are non-null by default. Mark nullable references with `org.jspecify.annotations.Nullable`, including type arguments (e.g. `List<@Nullable String>`). `@NonNull` is **forbidden** because it is redundant.
+*   Usage of alternative nullability contract annotations (such as `org.springframework.lang.Nullable`, `javax.annotation.Nullable`, `javax.annotation.Nonnull`, `org.jetbrains.annotations.*`, `edu.umd.cs.findbugs.annotations.*`) is **forbidden**.
 *   Use `@lombok.NonNull` only for runtime arguments null checks when they may realistically fail and improve stack trace readability. Do not use such checks universally.
 *   Never use `Optional` in fields, method parameters, or to wrap collections. Exceptions: declaring a return type from standard JDK APIs, terminal Streams, or Spring Data repositories.
 *   Unwrap immediately at the boundary via `.orElse(null)` or `.orElseThrow()`. Do not construct `Optional` instances to chain methods; favor simple imperative null checks (`if (x != null)`).
